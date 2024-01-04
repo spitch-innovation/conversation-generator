@@ -23,7 +23,7 @@ $ sudo apt-get install sox ffmpeg
 ```
 
 Install the python dependencies:
-```
+```bash
 $ pip install -r requirements.txt
 ```
 
@@ -34,7 +34,8 @@ EXAMPLE:
 
 1. Review the example template_1.txt for an idea about how to write a 'script'.
 
-2. ```
+2. Generate a conversation in JSON format:
+```bash
 $   python3 generate_conversation.py \
    -t template_1.txt \
    -a OPENAI_KEY \
@@ -43,7 +44,7 @@ $   python3 generate_conversation.py \
 ```
 
 3. Review the available TTS voices for en-us and select two:
-```
+```bash
 $ ./filter_voices.py -l en-us
 [
   {
@@ -61,7 +62,7 @@ $ ./filter_voices.py -l en-us
 ```
 
 4. Generate a synthetic recording, complete with optional overlap:
-```
+```bash
 $ ./synthesize_call.py -t template_1.txt_en-us.conversation.json \
    -vid1 Joanna -vid2 Matthew --threshold 0.15 --language en-us
    ...
