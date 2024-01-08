@@ -64,7 +64,33 @@ def set_overlap(duration, threshold=0.05):
         return overlap
 
     return 0.0
+
+def merge_sequential(json_data):
+    merged = []
+    current_turn = []
+    for turn in json_data:
         
+        if len(current_turn) == 0 or turn['channel'] == current_turn[-1]['channel']:
+            current_turn.append(turn)
+            continue
+
+        if len(current_turn) > 0 and not turn['channel'] == current_turn[-1]['channel']:
+            text = " ".join([chunk['text'] for chunk in current_turn])
+            merged.append({
+                "channel": current_turn[0]['channel'],
+                "text": text
+            })
+            current_turn = [turn]
+
+    if len(current_turn) > 0:
+        text = " ".join([chunk['text'] for chunk in current_turn])
+        merged.append({
+            "channel": current_turn[0]['channel'],
+            "text": text
+        })
+        
+    return merged
+
 def process_conversation(json_data, voice_map, language,
                          threshold=0.05, tmp_dir='./tmp', verbose=False):
     channel_1 = []
@@ -184,8 +210,11 @@ if __name__ == "__main__":
         "1": args.vid1,
         "2": args.vid2
     }
+
+    merged = merge_sequential(template)
+
     stereo_path = process_conversation(
-        template,
+        merged,
         voice_map,
         args.language,
         threshold=args.threshold,
@@ -194,3 +223,4 @@ if __name__ == "__main__":
     )
 
     os.system(f"play {stereo_path}")
+

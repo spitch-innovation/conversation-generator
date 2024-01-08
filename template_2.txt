@@ -1,0 +1,13 @@
+This is a call or conversation between a customer and a call center agent.
+The call center is for a company, ACME e-commerce.  The customer is very
+irate because an order they placed for a new microwave appears to have been
+lost.  It was never delivered and the product, which was intended as a
+birthday gift, never arrived.  The customer is now disappointed and annoyed. They want
+ a refund and an explanation.  The agent is experienced and does their best
+ to fulfill the needs of the client. The conversation goes very poorly
+ at the beginning despite the agent's best efforts.  But the agent manages
+ to turn it into a win at the end with help of their handling script (this
+ last should not be explicit in the conversation, but obvious as a teachable
+ moment to the manager/instructor reviewing it later).  The full conversation
+ should be no more than 2 minutes long.
+ 
